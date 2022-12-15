@@ -9,7 +9,25 @@
   <title>Validador JS</title>
 </head>
 <body>
-  <script type="text/javascript" src="./app/validator.js"></script>
+  <script type="text/javascript">
+function Validator() {
+  var textarea = document.getElementById("textarea");
+  var divtime = document.getElementById('time')
+  var msg = document.getElementById('msg')
+  var text = textarea.value;
+  try {
+    const start = performance.now();
+    eval(text);
+    const end = performance.now();
+    msg.innerHTML = `Seu código está funcionando`
+    divtime.innerHTML = `${end - start} ms`
+  } catch (error) {
+    msg.innerHTML = `Código inválido: ${error}`;
+    divtime.innerHTML = `Não foi executado`
+  }
+}
+
+  </script>
   <div id="app">
     <h1>Validador JS</h1>
     <textarea id="textarea" placeholder="Digite seu código JavaScript para verificar se ha erros"></textarea>
